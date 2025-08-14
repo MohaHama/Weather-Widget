@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Make macOS DMG using electron-forge
+      - name: Make macOS build
         run: npx electron-forge make --platform=darwin
 
       - name: Upload DMG artifact
