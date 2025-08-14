@@ -20,11 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build macOS DMG
-        run: npm run build
+      - name: Make macOS DMG using electron-forge
+        run: npx electron-forge make --platform=darwin
 
       - name: Upload DMG artifact
         uses: actions/upload-artifact@v4
         with:
           name: macOS-dmg
-          path: dist/*.dmg
+          path: out/make/**/*.dmg
