@@ -1,0 +1,31 @@
+name: Build macOS DMG
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Make macOS DMG
+        run: npm run make
+
+      - name: Upload DMG file
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-dmg
+          path: out/make/dmg/**/*
