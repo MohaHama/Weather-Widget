@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+:root {
+  --card-w: 300px;
+  --text: #ffffff;
+  --muted: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Poppins, system-ui, sans-serif;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+/* ---------- Widget Card ---------- */
+.card {
+  width: min(92vw, var(--card-w));
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.32);
+  position: relative;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- Titlebar ---------- */
+.titlebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 36px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 6px;
+  z-index: 10;
+  -webkit-app-region: drag;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+
+.card:hover .titlebar {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.win-btn {
+  width: 28px;
+  height: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  color: white;
+}
+
+.win-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.win-btn.close:hover {
+  background: rgba(255, 80, 80, 0.45);
+}
+
+/* ---------- Panel Layout ---------- */
+.panel {
+  padding: 12px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(2px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
+  font-weight: 600;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.temp {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.temp .deg {
+  font-size: 0.3em;
+  vertical-align: 25px;
+  margin-left: 2px;
+}
+
+.uv {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.right {
+  text-align: right;
+  display: grid;
+  gap: 0px;
+  align-content: start;
+}
+
+.time {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.date {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 50px;
+}
+
+.city {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+  cursor: text;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.2s;
+  white-space: nowrap;
+}
+.city:focus {
+  border-bottom-color: rgba(15, 23, 42, 0.35);
+}
+.city:empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted);
+}
+
+/* ---------- Forecast ---------- */
+.forecast {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  color: var(--text);
+  font-size: 0.8rem;
+}

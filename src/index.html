@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Mimo Weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="index.css" />
+  <script defer src="./app.js"></script>
+</head>
+<body>
+
+<main class="hero">
+  <section class="card no-drag">
+    <!-- Indbygget titlebar -->
+    <div class="titlebar header-drag" id="titlebar">
+      <div class="window-buttons">
+        <button class="win-btn no-drag close" id="closeBtn" aria-label="Close">♡</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="sunburst" aria-hidden="true"></div>
+
+      <div class="card-grid">
+        <div class="left">
+          <div class="temp"><span id="temp">23</span><span class="deg">°</span></div>
+          <div class="uv"><span>UV:</span> <span id="uvIndex">3.5</span></div>
+          <div class="status"><span class="icon">☀️</span><span id="weatherStatus">overcast clouds</span></div>
+        </div>
+
+        <div class="right">
+          <div class="time" id="timeStamp">12:39</div>
+          <div class="date" id="date">THU, 14/08</div>
+          <div class="city" id="city" contenteditable="true" data-placeholder="Type city…">Aabenraa</div>
+        </div>
+      </div>
+
+      <div class="forecast">
+        <div class="day"><span id="firstDay">FRI</span><span id="firstDaySymbol">🌤️</span></div>
+        <div class="day"><span id="secondDay">SAT</span><span id="secondDaySymbol">🌤️</span></div>
+        <div class="day"><span id="thirdDay">SUN</span><span id="thirdDaySymbol">🌤️</span></div>
+        <div class="day"><span id="fourthDay">MON</span><span id="fourthDaySymbol">☀️</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

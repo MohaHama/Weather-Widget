@@ -1,0 +1,13 @@
+# Node og build
+node_modules/
+dist/
+*.log
+
+# Platform-specifikke
+.DS_Store
+Thumbs.db
+
+# OS-filer
+*.exe
+*.dmg
+*.zip
