@@ -1,6 +1,6 @@
 {
   "name": "weatherwidget",
-  "productName": "Glass Weather",
+  "productName": "MMHI Weather",
   "version": "1.0.0",
   "description": "A beautiful glass-style weather widget built with Electron.",
   "author": {
@@ -14,8 +14,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\"",
-    "build": "electron-builder"
+    "lint": "echo \"No linting configured\""
   },
   "keywords": [],
   "dependencies": {
@@ -33,20 +32,37 @@
     "@electron/fuses": "^1.8.0",
     "electron": "37.2.6"
   },
-  "build": {
-    "appId": "com.mohammed.weatherwidget",
-    "productName": "MMHI Weather",
-    "files": [
-      "src/**/*",
-      "index.html",
-      "index.css",
-      "assets/**/*"
-    ],
-    "mac": {
-      "target": [
-        "dmg"
-      ],
-      "icon": "assets/icon.icns"
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "assets/icon"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "icon": "assets/icon.icns"
+          }
+        }
+      ]
     }
   }
 }
