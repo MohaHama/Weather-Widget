@@ -23,8 +23,8 @@ jobs:
       - name: Make macOS build
         run: npx electron-forge make --platform=darwin
 
-      - name: Upload artifact
+      - name: Upload DMG artifact
         uses: actions/upload-artifact@v4
         with:
           name: macOS-dmg
-          path: out/**/Glass Weather*.dmg
+          path: out/make/**/*.dmg
