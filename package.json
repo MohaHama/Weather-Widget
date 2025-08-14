@@ -1,6 +1,6 @@
 {
   "name": "weatherwidget",
-  "productName": "MMHI Weather",
+  "productName": "Glass Weather",
   "version": "1.0.0",
   "description": "A beautiful glass-style weather widget built with Electron.",
   "author": {
@@ -13,54 +13,47 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "publish": "electron-forge publish"
   },
   "keywords": [],
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1"
   },
   "devDependencies": {
+    "electron": "37.2.6",
     "@electron-forge/cli": "^7.8.3",
-    "@electron-forge/maker-deb": "^7.8.3",
     "@electron-forge/maker-dmg": "^7.8.3",
-    "@electron-forge/maker-rpm": "^7.8.3",
-    "@electron-forge/maker-squirrel": "^7.8.3",
     "@electron-forge/maker-zip": "^7.8.3",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.8.3",
-    "@electron-forge/plugin-fuses": "^7.8.3",
-    "@electron/fuses": "^1.8.0",
-    "electron": "37.2.6"
+    "@electron-forge/maker-squirrel": "^7.8.3",
+    "@electron-forge/maker-deb": "^7.8.3",
+    "@electron-forge/maker-rpm": "^7.8.3"
   },
   "config": {
     "forge": {
-      "packagerConfig": {
-        "icon": "assets/icon"
-      },
+      "packagerConfig": {},
       "makers": [
         {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {}
+          "name": "@electron-forge/maker-dmg",
+          "platforms": ["darwin"],
+          "config": {
+            "format": "ULFO"
+          }
         },
         {
           "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
+          "platforms": ["darwin"]
+        },
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "platforms": ["win32"]
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
+          "platforms": ["linux"]
         },
         {
           "name": "@electron-forge/maker-rpm",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-dmg",
-          "config": {
-            "icon": "assets/icon.icns"
-          }
+          "platforms": ["linux"]
         }
       ]
     }
