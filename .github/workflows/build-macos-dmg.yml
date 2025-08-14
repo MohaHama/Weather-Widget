@@ -2,30 +2,29 @@ name: Build macOS DMG
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
   build:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
 
-      - name: Make macOS DMG
-        run: npm run make
+      - name: Make macOS build
+        run: npx electron-forge make --platform=darwin
 
-      - name: Upload DMG file
-        uses: actions/upload-artifact@v3
+      - name: Upload DMG artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: macos-dmg
-          path: out/make/dmg/**/*
+          name: macOS-dmg
+          path: out/make/**/*.dmg
